@@ -78,7 +78,7 @@
     font-family: 'IBM Plex Mono', monospace;
     font-size: 0.85rem;
     color: var(--muted);
-    margin: 0 0 40px;
+    margin: 0 0 10px;
   }
   .status .cursor {
     display: inline-block;
@@ -91,6 +91,21 @@
   }
   @keyframes blink {
     50% { opacity: 0; }
+  }
+  .building {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.85rem;
+    color: var(--muted);
+    margin: 0 0 40px;
+  }
+  .building a {
+    color: var(--ink);
+    text-decoration: none;
+    border-bottom: 1px solid var(--line);
+  }
+  .building a:hover {
+    color: var(--paper);
+    border-color: var(--accent);
   }
   .links {
     display: flex;
@@ -130,6 +145,7 @@
     <hr class="rule">
     <p class="tagline">First entry. The rest is still being written.</p>
     <p class="status">status: in progress<span class="cursor"></span></p>
+    <p class="building">building: <a href="https://dndd7.github.io/monster-truck-hillclimb/" target="_blank" rel="noopener">terrain, torque, and momentum</a> &#8599;</p>
     <div class="links">
       <a href="https://github.com/dndd7" target="_blank" rel="noopener">github</a>
       <a href="mailto:dndd7@proton.me">email</a>
