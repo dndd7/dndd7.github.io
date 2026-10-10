@@ -6,7 +6,7 @@
 <title>dhinesh.xyz</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500&family=IBM+Plex+Mono:wght@400;500&family=Inter:wght@400;500&family=Courier+Prime:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500&family=JetBrains+Mono:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
 <style>
   :root {
     --bg: #ffffff;
@@ -19,7 +19,7 @@
   * { box-sizing: border-box; }
   html, body {
     margin: 0;
-    height: 100%;
+    min-height: 100%;
   }
   body {
     background: var(--bg);
@@ -29,7 +29,7 @@
     background-size: 40px 40px;
     background-position: center;
     color: var(--ink);
-    font-family: 'Inter', sans-serif;
+    font-family: 'JetBrains Mono', monospace;
     min-height: 100vh;
     display: flex;
     align-items: center;
@@ -39,17 +39,46 @@
   main {
     position: relative;
     width: 100%;
-    max-width: 560px;
+    max-width: 640px;
   }
   .eyebrow {
-    font-family: 'IBM Plex Mono', monospace;
     font-size: 0.78rem;
     color: var(--muted);
     letter-spacing: 0.04em;
-    margin: 0 0 28px;
+    margin: 0 0 14px;
     display: flex;
     justify-content: space-between;
   }
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    gap: 10px;
+  }
+  .tile {
+    position: relative;
+    background: var(--bg);
+    border: 1px solid var(--line);
+    border-radius: 3px;
+    padding: 16px 18px;
+    min-width: 0;
+  }
+  .tile .n {
+    position: absolute;
+    top: 10px;
+    right: 12px;
+    font-size: 0.65rem;
+    color: var(--muted);
+  }
+  .label {
+    font-size: 0.72rem;
+    font-weight: 500;
+    color: var(--accent);
+    margin: 0 0 10px;
+  }
+  .intro { grid-column: span 6; padding: 26px 22px 20px; }
+  .work { grid-column: span 3; }
+  .projects { grid-column: span 3; }
+  .elsewhere { grid-column: span 6; }
   h1 {
     font-family: 'Fraunces', serif;
     font-weight: 500;
@@ -63,22 +92,19 @@
     height: 3px;
     background: var(--accent);
     border: none;
-    margin: 22px 0 20px;
+    margin: 20px 0 16px;
   }
   .tagline {
-    font-family: 'Courier Prime', monospace;
     font-style: italic;
-    font-size: 1rem;
-    color: var(--ink);
+    font-size: 0.95rem;
     line-height: 1.6;
     max-width: 40ch;
     margin: 0 0 8px;
   }
   .status {
-    font-family: 'IBM Plex Mono', monospace;
     font-size: 0.85rem;
     color: var(--muted);
-    margin: 0 0 10px;
+    margin: 0;
   }
   .status .cursor {
     display: inline-block;
@@ -92,36 +118,41 @@
   @keyframes blink {
     50% { opacity: 0; }
   }
-  .building {
-    font-family: 'IBM Plex Mono', monospace;
-    font-size: 0.85rem;
+  .role {
+    font-family: 'Fraunces', serif;
+    font-size: 1.25rem;
+    line-height: 1.2;
+    color: var(--paper);
+    margin: 0;
+  }
+  .org {
+    font-size: 0.78rem;
     color: var(--muted);
-    margin: 0 0 6px;
+    margin: 6px 0 0;
   }
-  .building:last-of-type {
-    margin: 0 0 40px;
-  }
-  .building a {
+  .entry {
+    display: flex;
+    justify-content: space-between;
+    gap: 12px;
+    padding: 6px 0;
+    border-bottom: 1px dashed var(--line);
+    font-size: 0.8rem;
     color: var(--ink);
     text-decoration: none;
-    border-bottom: 1px solid var(--line);
+    transition: color 0.15s ease;
   }
-  .building a:hover {
-    color: var(--paper);
-    border-color: var(--accent);
-  }
-  .links {
-    display: flex;
-    gap: 14px;
-  }
+  .entry:last-child { border-bottom: none; }
+  .entry span:last-child { color: var(--muted); }
+  .entry:hover { color: var(--accent); }
   .links a {
-    font-family: 'IBM Plex Mono', monospace;
+    display: inline-block;
     font-size: 0.8rem;
     color: var(--ink);
     text-decoration: none;
     border: 1px solid var(--line);
     padding: 9px 16px;
     border-radius: 3px;
+    margin: 0 8px 8px 0;
     transition: border-color 0.15s ease, color 0.15s ease;
   }
   .links a:hover {
@@ -129,34 +160,51 @@
     color: var(--paper);
   }
   footer {
-    margin-top: 56px;
-    font-family: 'IBM Plex Mono', monospace;
+    margin-top: 16px;
     font-size: 0.72rem;
     color: var(--muted);
     display: flex;
-    justify-content: space-between;
+    justify-content: flex-end;
   }
-  @media (max-width: 480px) {
-    .links { flex-wrap: wrap; }
+  @media (max-width: 560px) {
+    .work, .projects { grid-column: span 6; }
   }
 </style>
 </head>
 <body>
   <main>
     <p class="eyebrow"><span>~/dhinesh.xyz</span><span>N 12.97&deg; E 77.59&deg;</span></p>
-    <h1>Dhinesh</h1>
-    <hr class="rule">
-    <p class="tagline">First entry. The rest is still being written.</p>
-    <p class="status">status: in progress<span class="cursor"></span></p>
-    <p class="building">building: <a href="https://dndd7.github.io/monster-truck-hillclimb/" target="_blank" rel="noopener">terrain, torque, and momentum</a> &#8599;</p>
-    <p class="building">also: <a href="https://dndd7.github.io/free-world-2d/" target="_blank" rel="noopener">lines, gravity, and consequences</a> &#8599;</p>
-    <div class="links">
-      <a href="https://github.com/dndd7" target="_blank" rel="noopener">github</a>
-      <a href="https://www.linkedin.com/in/dhineshradhakrishnan/" target="_blank" rel="noopener">linkedin</a>
-      <a href="mailto:dndd7@proton.me">email</a>
+    <div class="grid">
+      <section class="tile intro">
+        <span class="n">001</span>
+        <h1>Dhinesh</h1>
+        <hr class="rule">
+        <p class="tagline">First entry. The rest is still being written.</p>
+        <p class="status">status: in progress<span class="cursor"></span></p>
+      </section>
+      <section class="tile work">
+        <span class="n">002</span>
+        <p class="label">## work</p>
+        <p class="role">Product Manager</p>
+        <p class="org">Juspay, Bengaluru</p>
+      </section>
+      <section class="tile projects">
+        <span class="n">003</span>
+        <p class="label">## projects</p>
+        <a class="entry" href="https://dndd7.github.io/monster-truck-hillclimb/" target="_blank" rel="noopener"><span>terrain, torque, and momentum</span><span>&#8599;</span></a>
+        <a class="entry" href="https://dndd7.github.io/free-world-2d/" target="_blank" rel="noopener"><span>lines, gravity, and consequences</span><span>&#8599;</span></a>
+      </section>
+      <section class="tile elsewhere">
+        <span class="n">004</span>
+        <p class="label">## elsewhere</p>
+        <div class="links">
+          <a href="https://github.com/dndd7" target="_blank" rel="noopener">github</a>
+          <a href="https://www.linkedin.com/in/dhineshradhakrishnan/" target="_blank" rel="noopener">linkedin</a>
+          <a href="mailto:dndd7@proton.me">email</a>
+        </div>
+      </section>
     </div>
     <footer>
-      <span>entry 001</span>
       <span>&copy; 2026</span>
     </footer>
   </main>
